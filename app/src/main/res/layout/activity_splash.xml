@@ -1,0 +1,45 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_scre">
+
+
+    <!-- Mapa mundi en la parte superior -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@drawable/mapamundi_splash">
+    </RelativeLayout>
+
+    <!-- Logo Section -->
+    <RelativeLayout
+        android:id="@+id/logo_section"
+        android:layout_width="285.16dp"
+        android:layout_height="89.37dp"
+        android:layout_centerInParent="true">
+        <ImageView
+            android:id="@+id/logoImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/logo_splash" />
+    </RelativeLayout>
+
+    <!-- Clouds Graphic at the bottom -->
+    <RelativeLayout
+        android:id="@+id/clouds_graph"
+        android:layout_width="match_parent"
+        android:layout_height="252dp"
+        android:layout_alignParentBottom="true">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/nubes_splash"
+            android:scaleType="fitXY"/>
+    </RelativeLayout>
+
+
+</RelativeLayout>
+
+
+
