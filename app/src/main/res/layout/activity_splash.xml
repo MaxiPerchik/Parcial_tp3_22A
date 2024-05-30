@@ -17,11 +17,13 @@
         android:layout_width="285.16dp"
         android:layout_height="89.37dp"
         android:layout_centerInParent="true">
+
         <ImageView
             android:id="@+id/logoImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:contentDescription="@string/app_name"
             android:src="@drawable/logo_splash" />
     </RelativeLayout>
 
@@ -31,11 +33,13 @@
         android:layout_width="match_parent"
         android:layout_height="252dp"
         android:layout_alignParentBottom="true">
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/nubes_splash"
-            android:scaleType="fitXY"/>
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitXY"
+            android:src="@drawable/nubes_splash" />
     </RelativeLayout>
 
 

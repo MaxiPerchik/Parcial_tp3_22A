@@ -5,5 +5,8 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.Parcial_22A_TP3" parent="Base.Theme.Parcial_22A_TP3" />
+    <style name="Theme.Parcial_22A_TP3" parent="Base.Theme.Parcial_22A_TP3">
+        <!-- para que no muestre el splash screen x default y tengamos la ilkusion del nuestro -->
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
 </resources>
