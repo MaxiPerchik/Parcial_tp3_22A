@@ -9,17 +9,49 @@
         android:id="@+id/my_app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#FFFF"
+        app:elevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/custom_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            android:theme="@style/CustomToolbarStyle"
             app:contentInsetStartWithNavigation="0dp"
-            app:layout_collapseMode="pin" />
+            app:layout_collapseMode="pin">
+
+            <ImageView
+                android:id="@+id/logoImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:contentDescription="@string/app_name"
+                android:gravity="center_vertical"
+                android:src="@drawable/ic_logo" />
+
+
+            <TextView
+                android:id="@+id/toolbarTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:text="@string/title_profiles"
+                android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title" />
+
+
+            <include
+                android:id="@+id/includeProfileBackground"
+                layout="@layout/component_profile_image"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp" />
+        </com.google.android.material.appbar.MaterialToolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 

@@ -1,20 +1,20 @@
 package ort.clases.parcial_22a_tp3.ui._main
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.core.content.ContextCompat
+import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import ort.clases.parcial_22a_tp3.R
 import ort.clases.parcial_22a_tp3.databinding.ActivityMainBinding
 
@@ -22,6 +22,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var toolbar: MaterialToolbar
+    private lateinit var logoImage: ImageView
+    private lateinit var includeProfileBackground: View
+    private lateinit var toolbarTitle: TextView
+
 
     // IDs de navegación
     private val fragmentsNavigation = setOf(
@@ -64,9 +69,120 @@ class MainActivity : AppCompatActivity() {
         // Configura BottomNavigationView con NavController
         binding.navView.setupWithNavController(navController)
 
+        toolbar = findViewById(R.id.custom_toolbar)
+        logoImage = findViewById(R.id.logoImage)
+        includeProfileBackground = findViewById(R.id.includeProfileBackground)
+        toolbarTitle = findViewById(R.id.toolbarTitle)
+
+        //Configura comportamiento según Fragmento
+        navController.addOnDestinationChangedListener { _, destination: NavDestination, _ ->
+            when (destination.id) {
+                R.id.navigation_explore -> {
+                    showHideElements(toolbar)
+                    activateDrawerLayout(toolbar)
+                }
+
+                R.id.navigation_search -> {
+                    showHideElements(
+                        toolbar,
+                        text = "Search Flight",
+                        logoImageVisibility = View.GONE,
+                        includeProfileBackgroundVisibility = View.GONE
+                    )
+                    navigateToMainNavFragment(toolbar)
+                }
+
+                R.id.navigation_offers -> {
+                    showHideElements(
+                        toolbar,
+                        text = "Offers",
+                        logoImageVisibility = View.GONE,
+                        includeProfileBackgroundVisibility = View.GONE
+                    )
+                    navigateToMainNavFragment(toolbar)
+                }
+
+                R.id.navigation_profiles -> {
+                    toolbar.visibility = View.GONE
+                }
+
+                R.id.navigation_notification -> {
+                    showHideElements(
+                        toolbar,
+                        text = "Notifications",
+                        logoImageVisibility = View.GONE,
+                        includeProfileBackgroundVisibility = View.GONE
+                    )
+                    navigateToMainNavFragment(toolbar)
+                }
+
+                R.id.navigation_get_help -> {
+                    showHideElements(
+                        toolbar,
+                        text = "Get Help",
+                        logoImageVisibility = View.GONE,
+                        includeProfileBackgroundVisibility = View.GONE
+                    )
+                    navigateToMainNavFragment(toolbar)
+                }
+
+                R.id.navigation_calendar -> {
+                    showHideElements(
+                        toolbar,
+                        text = "Calendar",
+                        logoImageVisibility = View.GONE,
+                        includeProfileBackgroundVisibility = View.GONE
+                    )
+                    navigateToMainNavFragment(toolbar)
+                }
+
+                else -> {
+                    showHideElements(toolbar)
+                }
+            }
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    /**
+     * Cambia el icono de la habnurguesa, y te lleva al fragmento principal.
+     */
+    private fun navigateToMainNavFragment(toolbar: MaterialToolbar) {
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.back_arrow)
+        toolbar.navigationIcon = ContextCompat.getDrawable(this, R.drawable.back_arrow)
+        toolbar.setNavigationOnClickListener {
+            navController.navigate(R.id.navigation_explore)
+        }
+    }
+
+
+    /**
+     * la funcion navigate_to_main_fragment sobreescribe el comportambiento
+     * aca lo vuelvo a activar TODO: fix
+     */
+    private fun activateDrawerLayout(toolbar: MaterialToolbar) {
+        toolbar.setNavigationOnClickListener {
+            binding.drawerLayout.openDrawer(GravityCompat.START)
+        }
+    }
+
+    /**
+     * Muetra u oculta elementos de la tool bar
+     */
+    private fun showHideElements(
+        toolbar: MaterialToolbar,
+        toolbarVisible: Int = View.VISIBLE,
+        text: String = "",
+        logoImageVisibility: Int = View.VISIBLE,
+        includeProfileBackgroundVisibility: Int = View.VISIBLE
+    ) {
+        toolbar.visibility = toolbarVisible
+        toolbar.title = ""
+        toolbarTitle.text = text
+        logoImage.visibility = logoImageVisibility
+        includeProfileBackground.visibility = includeProfileBackgroundVisibility
     }
 }
