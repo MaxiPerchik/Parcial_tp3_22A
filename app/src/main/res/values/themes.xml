@@ -10,5 +10,13 @@
     <style name="Theme.Parcial_22A_TP3" parent="Base.Theme.Parcial_22A_TP3">
         <!-- para que no muestre el splash screen x default y tengamos la illusion del nuestro -->
         <item name="android:windowIsTranslucent">true</item>
+        <item name="android:fontFamily">@font/roboto</item>
+
+    </style>
+
+    <style name="AppTheme.ProfileTitle" parent="Base.Theme.Parcial_22A_TP3">
+        <item name="android:textColor">@color/flight_black</item>
+        <item name="android:textStyle">bold</item>
+<!--        <item name="android:backgroundTint">@null</item>-->
     </style>
 </resources>

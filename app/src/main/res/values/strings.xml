@@ -2,9 +2,14 @@
     <string name="app_name">Parcial_22A_TP3</string>
     <string name="title_explore">Explore</string>
     <string name="title_offers">Offers</string>
-    <string name="title_profiles">Profiles</string>
+    <string name="title_profiles">Profile</string>
     <string name="title_search">Search Flight</string>
     <string name="title_notification">Notification</string>
     <string name="title_get_help">Get Help</string>
     <string name="title_calendar">Calendar</string>
+    <string name="hello">Hello</string>
+    <string name="profile_name">Macy Johnson</string>
+    <string name="profile_country">Baguio, Philippines</string>
+    <string name="profile_desc">I like the beach, mountains, forest and everything about nature! :)</string>
+    <string name="Payment_Details">Payment Details</string>
 </resources>
