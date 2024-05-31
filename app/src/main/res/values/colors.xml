@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--    Figma pallet colors  -->
+    <color name="flight_black">#191919</color>
+    <color name="flight_gray">#7E8B97</color>
+    <color name="flight_blue">#10579B</color>
+    <color name="flight_light_blue">#3AA4C8</color>
+    <color name="flight_orange">#F99A0E</color>
+    <color name="flight_withe">#F8F9FB</color>
+
+    <!--    Default  -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
 </resources>

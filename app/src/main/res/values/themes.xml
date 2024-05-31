@@ -1,8 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Parcial_22A_TP3" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/flight_blue</item>
+        <item name="colorPrimaryDark">@color/white</item>
+<!--        <item name="colorOnPrimary">@color/white</item>-->
     </style>
 
     <style name="Theme.Parcial_22A_TP3" parent="Base.Theme.Parcial_22A_TP3">

@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Parcial_22A_TP3</string>
-    <string name="title_explore">explore</string>
-    <string name="title_offers">offers</string>
-    <string name="title_profiles">profiles</string>
-    <string name="title_search">search</string>
+    <string name="title_explore">Explore</string>
+    <string name="title_offers">Offers</string>
+    <string name="title_profiles">Profiles</string>
+    <string name="title_search">Search Flight</string>
     <string name="title_notification">Notification</string>
     <string name="title_get_help">Get Help</string>
     <string name="title_calendar">Calendar</string>

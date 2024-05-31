@@ -74,73 +74,7 @@ class MainActivity : AppCompatActivity() {
         includeProfileBackground = findViewById(R.id.includeProfileBackground)
         toolbarTitle = findViewById(R.id.toolbarTitle)
 
-        //Configura comportamiento según Fragmento
-        navController.addOnDestinationChangedListener { _, destination: NavDestination, _ ->
-            when (destination.id) {
-                R.id.navigation_explore -> {
-                    showHideElements(toolbar)
-                    activateDrawerLayout(toolbar)
-                }
-
-                R.id.navigation_search -> {
-                    showHideElements(
-                        toolbar,
-                        text = "Search Flight",
-                        logoImageVisibility = View.GONE,
-                        includeProfileBackgroundVisibility = View.GONE
-                    )
-                    navigateToMainNavFragment(toolbar)
-                }
-
-                R.id.navigation_offers -> {
-                    showHideElements(
-                        toolbar,
-                        text = "Offers",
-                        logoImageVisibility = View.GONE,
-                        includeProfileBackgroundVisibility = View.GONE
-                    )
-                    navigateToMainNavFragment(toolbar)
-                }
-
-                R.id.navigation_profiles -> {
-                    toolbar.visibility = View.GONE
-                }
-
-                R.id.navigation_notification -> {
-                    showHideElements(
-                        toolbar,
-                        text = "Notifications",
-                        logoImageVisibility = View.GONE,
-                        includeProfileBackgroundVisibility = View.GONE
-                    )
-                    navigateToMainNavFragment(toolbar)
-                }
-
-                R.id.navigation_get_help -> {
-                    showHideElements(
-                        toolbar,
-                        text = "Get Help",
-                        logoImageVisibility = View.GONE,
-                        includeProfileBackgroundVisibility = View.GONE
-                    )
-                    navigateToMainNavFragment(toolbar)
-                }
-
-                R.id.navigation_calendar -> {
-                    showHideElements(
-                        toolbar,
-                        text = "Calendar",
-                        logoImageVisibility = View.GONE,
-                        includeProfileBackgroundVisibility = View.GONE
-                    )
-                    navigateToMainNavFragment(toolbar)
-                }
-
-                else -> {
-                    showHideElements(toolbar)
-                }
-            }
-        }
+        fragmentBehaviour()
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -184,5 +118,77 @@ class MainActivity : AppCompatActivity() {
         toolbarTitle.text = text
         logoImage.visibility = logoImageVisibility
         includeProfileBackground.visibility = includeProfileBackgroundVisibility
+    }
+
+    /**
+     * Configura comportamiento según Fragmento
+     */
+    private fun fragmentBehaviour() {
+        navController.addOnDestinationChangedListener { _, destination: NavDestination, _ ->
+            when (destination.id) {
+                R.id.navigation_explore -> {
+                    showHideElements(toolbar)
+                    activateDrawerLayout(toolbar)
+                }
+
+                R.id.navigation_search -> {
+                    showHideElements(
+                        toolbar,
+                        text = getString(R.string.title_search),
+                        logoImageVisibility = View.GONE,
+                        includeProfileBackgroundVisibility = View.GONE
+                    )
+                    navigateToMainNavFragment(toolbar)
+                }
+
+                R.id.navigation_offers -> {
+                    showHideElements(
+                        toolbar,
+                        text = getString(R.string.title_offers),
+                        logoImageVisibility = View.GONE,
+                        includeProfileBackgroundVisibility = View.GONE
+                    )
+                    navigateToMainNavFragment(toolbar)
+                }
+
+                R.id.navigation_profiles -> {
+                    toolbar.visibility = View.GONE
+                }
+
+                R.id.navigation_notification -> {
+                    showHideElements(
+                        toolbar,
+                        text = getString(R.string.title_notification),
+                        logoImageVisibility = View.GONE,
+                        includeProfileBackgroundVisibility = View.GONE
+                    )
+                    navigateToMainNavFragment(toolbar)
+                }
+
+                R.id.navigation_get_help -> {
+                    showHideElements(
+                        toolbar,
+                        text = getString(R.string.title_get_help),
+                        logoImageVisibility = View.GONE,
+                        includeProfileBackgroundVisibility = View.GONE
+                    )
+                    navigateToMainNavFragment(toolbar)
+                }
+
+                R.id.navigation_calendar -> {
+                    showHideElements(
+                        toolbar,
+                        text = getString(R.string.title_calendar),
+                        logoImageVisibility = View.GONE,
+                        includeProfileBackgroundVisibility = View.GONE
+                    )
+                    navigateToMainNavFragment(toolbar)
+                }
+
+                else -> {
+                    showHideElements(toolbar)
+                }
+            }
+        }
     }
 }
