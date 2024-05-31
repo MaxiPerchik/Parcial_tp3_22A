@@ -25,4 +25,19 @@
         android:name="ort.clases.parcial_22a_tp3.ui.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/navigation_calendar"
+        android:name="ort.clases.parcial_22a_tp3.ui.calendar.CalendarFragment"
+        android:label="fragment_calendar"
+        tools:layout="@layout/fragment_calendar" />
+    <fragment
+        android:id="@+id/navigation_get_help"
+        android:name="ort.clases.parcial_22a_tp3.ui.gethelp.GetHelpFragment"
+        android:label="fragment_get_help"
+        tools:layout="@layout/fragment_get_help" />
+    <fragment
+        android:id="@+id/navigation_notification"
+        android:name="ort.clases.parcial_22a_tp3.ui.notification.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" />
 </navigation>
