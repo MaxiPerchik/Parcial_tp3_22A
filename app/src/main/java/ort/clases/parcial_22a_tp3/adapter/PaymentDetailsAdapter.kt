@@ -1,6 +1,7 @@
 package ort.clases.parcial_22a_tp3.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ort.clases.parcial_22a_tp3.R
@@ -25,6 +26,13 @@ class PaymentDetailsAdapter(
     override fun onBindViewHolder(holder: PaymentDetailsHolder, position: Int) {
         val paymentDetail = paymentDetails[position]
         holder.bind(paymentDetail, listener)
+
+        // mostrar u ocultar el tag
+        if (paymentDetail.isNew) {
+            holder.newTag.visibility = View.VISIBLE
+        } else {
+            holder.newTag.visibility = View.GONE
+        }
     }
 
     // Método que devuelve el número de elementos en la lista

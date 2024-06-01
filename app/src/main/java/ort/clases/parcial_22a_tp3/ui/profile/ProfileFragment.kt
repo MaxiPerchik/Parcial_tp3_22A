@@ -52,7 +52,7 @@ class ProfileFragment : Fragment(), OnPaymentDetailClickListener {
 
         val paymentDetails = listOf(
             PaymentDetail(R.drawable.credit_card, getString(R.string.payment_details)),
-            PaymentDetail(R.drawable.person, getString(R.string.referral_code)),
+            PaymentDetail(R.drawable.person, getString(R.string.referral_code),true),
             PaymentDetail(R.drawable.settings, getString(R.string.settings)),
             PaymentDetail(R.drawable.log_out, getString(R.string.logout))
         )

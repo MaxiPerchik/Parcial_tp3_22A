@@ -19,5 +19,6 @@
     <!--    -->
     <string name="feature_not_implemented">Feature not Implemented</string>
     <string name="backgroundimg">backgroundimg</string>
+    <string name="new_tag_input">NEW</string>
 
 </resources>
