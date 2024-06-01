@@ -11,5 +11,13 @@
     <string name="profile_name">Macy Johnson</string>
     <string name="profile_country">Baguio, Philippines</string>
     <string name="profile_desc">I like the beach, mountains, forest and everything about nature! :)</string>
-    <string name="Payment_Details">Payment Details</string>
+    <string name="payment_details">Payment Details</string>
+    <string name="referral_code">Referral Code</string>
+    <string name="settings">Settings</string>
+    <string name="logout">Logout</string>
+
+    <!--    -->
+    <string name="feature_not_implemented">Feature not Implemented</string>
+    <string name="backgroundimg">backgroundimg</string>
+
 </resources>
