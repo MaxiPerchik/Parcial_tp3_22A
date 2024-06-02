@@ -12,5 +12,8 @@ buildscript {
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version")
 
         classpath ("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.21")
+
+        val hilt_version = "2.48"
+        classpath ("com.google.dagger:hilt-android-gradle-plugin:$hilt_version")
     }
 }
