@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("androidx.navigation.safeargs.kotlin")
+    id ("kotlin-kapt")
+    id ("dagger.hilt.android.plugin")
 }
 
 android {
@@ -68,4 +70,15 @@ dependencies {
 
     // splash screen
     implementation("androidx.core:core-splashscreen:1.0.0")
+
+    //room
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    kapt ("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+
+    //dagger hilt
+    val hilt_version = "2.48"
+    implementation("com.google.dagger:hilt-android:$hilt_version")
+    kapt("com.google.dagger:hilt-android-compiler:$hilt_version")
 }

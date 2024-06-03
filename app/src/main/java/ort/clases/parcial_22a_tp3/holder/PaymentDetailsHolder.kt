@@ -1,4 +1,4 @@
-package ort.clases.parcial_22a_tp3.holders
+package ort.clases.parcial_22a_tp3.holder
 
 import android.view.View
 import android.widget.ImageView
@@ -6,7 +6,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ort.clases.parcial_22a_tp3.R
-import ort.clases.parcial_22a_tp3.data.models.PaymentDetail
+import ort.clases.parcial_22a_tp3.domain.models.PaymentDetail
 import ort.clases.parcial_22a_tp3.interfaces.OnPaymentDetailClickListener
 
 class PaymentDetailsHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

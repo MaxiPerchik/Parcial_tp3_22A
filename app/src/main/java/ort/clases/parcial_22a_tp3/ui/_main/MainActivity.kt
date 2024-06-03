@@ -16,9 +16,11 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
+import dagger.hilt.android.AndroidEntryPoint
 import ort.clases.parcial_22a_tp3.R
 import ort.clases.parcial_22a_tp3.databinding.ActivityMainBinding
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
