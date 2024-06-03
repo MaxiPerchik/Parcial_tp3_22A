@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import ort.clases.parcial_22a_tp3.R
 import ort.clases.parcial_22a_tp3.adapter.PaymentDetailsAdapter
-import ort.clases.parcial_22a_tp3.data.models.PaymentDetail
+import ort.clases.parcial_22a_tp3.domain.models.PaymentDetail
 import ort.clases.parcial_22a_tp3.interfaces.OnPaymentDetailClickListener
 
 class ProfileFragment : Fragment(), OnPaymentDetailClickListener {

@@ -5,9 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ort.clases.parcial_22a_tp3.R
-import ort.clases.parcial_22a_tp3.data.models.PaymentDetail
+import ort.clases.parcial_22a_tp3.domain.models.PaymentDetail
 import ort.clases.parcial_22a_tp3.interfaces.OnPaymentDetailClickListener
-import ort.clases.parcial_22a_tp3.holders.PaymentDetailsHolder
+import ort.clases.parcial_22a_tp3.holder.PaymentDetailsHolder
 
 // Adaptador para la lista de detalles de pago
 class PaymentDetailsAdapter(

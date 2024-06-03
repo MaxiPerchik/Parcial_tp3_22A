@@ -11,7 +11,7 @@ object InterceptorCustom : Interceptor {
 
         var request = chain.request()
         request = request.newBuilder()
-            .header("X-Api-Key", API_KEY?:"")
+            .header("api_key", API_KEY?:"")
             .header("Accept", "application/json")
             .header("Content-Type", "application/json")
             .build()

@@ -24,7 +24,11 @@
         android:id="@+id/navigation_search"
         android:name="ort.clases.parcial_22a_tp3.ui.search.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_navigation_search_to_searchResultsFragment"
+            app:destination="@id/navigation_search_result" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_calendar"
         android:name="ort.clases.parcial_22a_tp3.ui.calendar.CalendarFragment"
@@ -40,4 +44,13 @@
         android:name="ort.clases.parcial_22a_tp3.ui.notification.NotificationFragment"
         android:label="fragment_notification"
         tools:layout="@layout/fragment_notification" />
+    <fragment
+        android:id="@+id/navigation_search_result"
+        android:name="ort.clases.parcial_22a_tp3.ui.search.results.SearchResultsFragment"
+        android:label="fragment_search_results"
+        tools:layout="@layout/fragment_search_results" >
+        <action
+            android:id="@+id/action_navigation_search_result_to_navigation_search"
+            app:destination="@id/navigation_search" />
+    </fragment>
 </navigation>
