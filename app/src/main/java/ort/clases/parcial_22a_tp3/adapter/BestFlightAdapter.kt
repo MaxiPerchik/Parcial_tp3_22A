@@ -1,6 +1,5 @@
 package ort.clases.parcial_22a_tp3.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,7 +7,6 @@ import ort.clases.parcial_22a_tp3.R
 import ort.clases.parcial_22a_tp3.domain.models.BestFlight
 import ort.clases.parcial_22a_tp3.holder.BestFlightHolder
 import ort.clases.parcial_22a_tp3.interfaces.OnClickNavigate
-import kotlin.math.log
 
 class BestFlightAdapter(
     var bestFlightsList: MutableList<BestFlight>,
@@ -24,11 +22,17 @@ class BestFlightAdapter(
     override fun onBindViewHolder(holder: BestFlightHolder, position: Int) {
         val bestFlight = bestFlightsList[position]
         holder.setBestFlightPrice(bestFlight.price)
-        holder.setNameAirline(bestFlight.flights[0].airlineName)
-
-        holder.viewDetails().setOnClickListener {
-            onClickNavigate.toBestFlight(bestFlight)
-        }
+        holder.setTravelClass(bestFlight.flights[0].travelClass)
+        holder.setDepartureName(bestFlight.flights[0].departureAirport.name)
+        holder.setDepartureId(bestFlight.flights[0].departureAirport.id)
+        holder.setArrivalId(bestFlight.flights[0].arrivalAirport.id)
+        holder.setArrivalName(bestFlight.flights[0].arrivalAirport.name)
+        holder.setTime(bestFlight.totalDuration)
+        holder.setAirlineLogo(bestFlight.flights[0].airlineLogo)
+        holder.setAirlineName(bestFlight.flights[0].airlineName)
+//        holder.viewDetails().setOnClickListener {
+//            onClickNavigate.toBestFlight(bestFlight)
+//        }
     }
 
     override fun getItemCount() = bestFlightsList.size
