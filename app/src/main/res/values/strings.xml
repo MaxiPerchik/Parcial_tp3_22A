@@ -19,6 +19,10 @@
     <string name="settings_card_text">Modo Oscuro</string>
     <string name="logout">Logout</string>
 
+    <string name="offer_title_text"><![CDATA[<b>Get 20% discount</b> with your Master credit cards]]></string>
+
+
+
     <!--    -->
     <string name="feature_not_implemented">Feature not Implemented</string>
     <string name="backgroundimg">backgroundimg</string>
