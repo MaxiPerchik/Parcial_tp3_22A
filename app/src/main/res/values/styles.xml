@@ -11,6 +11,17 @@
         <item name="subtitleTextColor">@android:color/white</item>
     </style>
 
+    <style name="CustomSwitch" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="android:thumb">@drawable/switch_thumb_selector_day</item>
+        <item name="android:track">@drawable/switch_track_selector_day</item>
+    </style>
+
+    <style name="CustomSwitchNight" parent="Widget.Material3.CompoundButton.Switch">
+        <item name="android:thumb">@drawable/switch_thumb_selector_night</item>
+        <item name="android:track">@drawable/switch_track_selector_night</item>
+    </style>
+
+
     <style name="ProrofileTopCornerRadious" parent="ShapeAppearance.MaterialComponents.MediumComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeTopLeft">10dp</item>

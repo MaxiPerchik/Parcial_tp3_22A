@@ -4,7 +4,12 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/flight_blue</item>
         <item name="colorPrimaryDark">@color/white</item>
-<!--        <item name="colorOnPrimary">@color/white</item>-->
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnSurface">@color/flight_black</item>
+        <item name="colorSurface">@color/flight_withe</item>
+
+        <!-- Personalización del Switch Dia-->
+        <item name="switchStyle">@style/CustomSwitch</item>
     </style>
 
     <style name="Theme.Parcial_22A_TP3" parent="Base.Theme.Parcial_22A_TP3">

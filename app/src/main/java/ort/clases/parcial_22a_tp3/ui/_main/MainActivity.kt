@@ -17,7 +17,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
 import ort.clases.parcial_22a_tp3.R
+import ort.clases.parcial_22a_tp3.R.id
 import ort.clases.parcial_22a_tp3.databinding.ActivityMainBinding
+import androidx.appcompat.app.AppCompatDelegate;
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,13 +34,14 @@ class MainActivity : AppCompatActivity() {
 
     // IDs de navegación
     private val fragmentsNavigation = setOf(
-        R.id.navigation_explore,
-        R.id.navigation_search,
-        R.id.navigation_offers,
-        R.id.navigation_profiles,
-        R.id.navigation_notification,
-        R.id.navigation_get_help,
-        R.id.navigation_calendar,
+        id.navigation_explore,
+        id.navigation_search,
+        id.navigation_offers,
+        id.navigation_profiles,
+        id.navigation_notification,
+        id.navigation_get_help,
+        id.navigation_calendar,
+        id.navigation_settings,
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 
         // Configura el NavController y NavHostFragment
         val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
+            .findFragmentById(id.nav_host_fragment_activity_main) as NavHostFragment
         navController = navHostFragment.navController
 
         // Configuración del AppBarConfiguration
@@ -71,12 +74,15 @@ class MainActivity : AppCompatActivity() {
         // Configura BottomNavigationView con NavController
         binding.navView.setupWithNavController(navController)
 
-        toolbar = findViewById(R.id.custom_toolbar)
-        logoImage = findViewById(R.id.logoImage)
-        includeProfileBackground = findViewById(R.id.includeProfileBackground)
-        toolbarTitle = findViewById(R.id.toolbarTitle)
+        toolbar = findViewById(id.custom_toolbar)
+        logoImage = findViewById(id.logoImage)
+        includeProfileBackground = findViewById(id.includeProfileBackground)
+        toolbarTitle = findViewById(id.toolbarTitle)
 
         fragmentBehaviour()
+
+        // Set the night mode to follow the system mode (day/night)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -84,13 +90,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Cambia el icono de la habnurguesa, y te lleva al fragmento principal.
+     * Cambia el icono de la hamburguesa, y te lleva al fragmento principal.
      */
     private fun navigateToMainNavFragment(toolbar: MaterialToolbar) {
         supportActionBar?.setHomeAsUpIndicator(R.drawable.back_arrow)
         toolbar.navigationIcon = ContextCompat.getDrawable(this, R.drawable.back_arrow)
         toolbar.setNavigationOnClickListener {
-            navController.navigate(R.id.navigation_explore)
+            navController.navigate(id.navigation_explore)
         }
     }
 
@@ -128,12 +134,12 @@ class MainActivity : AppCompatActivity() {
     private fun fragmentBehaviour() {
         navController.addOnDestinationChangedListener { _, destination: NavDestination, _ ->
             when (destination.id) {
-                R.id.navigation_explore -> {
+                id.navigation_explore -> {
                     showHideElements(toolbar)
                     activateDrawerLayout(toolbar)
                 }
 
-                R.id.navigation_search -> {
+                id.navigation_search -> {
                     showHideElements(
                         toolbar,
                         text = getString(R.string.title_search),
@@ -143,7 +149,7 @@ class MainActivity : AppCompatActivity() {
                     navigateToMainNavFragment(toolbar)
                 }
 
-                R.id.navigation_offers -> {
+                id.navigation_offers -> {
                     showHideElements(
                         toolbar,
                         text = getString(R.string.title_offers),
@@ -153,11 +159,11 @@ class MainActivity : AppCompatActivity() {
                     navigateToMainNavFragment(toolbar)
                 }
 
-                R.id.navigation_profiles -> {
+                id.navigation_profiles -> {
                     toolbar.visibility = View.GONE
                 }
 
-                R.id.navigation_notification -> {
+                id.navigation_notification -> {
                     showHideElements(
                         toolbar,
                         text = getString(R.string.title_notification),
@@ -167,7 +173,7 @@ class MainActivity : AppCompatActivity() {
                     navigateToMainNavFragment(toolbar)
                 }
 
-                R.id.navigation_get_help -> {
+                id.navigation_get_help -> {
                     showHideElements(
                         toolbar,
                         text = getString(R.string.title_get_help),
@@ -177,10 +183,20 @@ class MainActivity : AppCompatActivity() {
                     navigateToMainNavFragment(toolbar)
                 }
 
-                R.id.navigation_calendar -> {
+                id.navigation_calendar -> {
                     showHideElements(
                         toolbar,
                         text = getString(R.string.title_calendar),
+                        logoImageVisibility = View.GONE,
+                        includeProfileBackgroundVisibility = View.GONE
+                    )
+                    navigateToMainNavFragment(toolbar)
+                }
+
+                id.navigation_settings -> {
+                    showHideElements(
+                        toolbar,
+                        text = getString(R.string.title_settings),
                         logoImageVisibility = View.GONE,
                         includeProfileBackgroundVisibility = View.GONE
                     )

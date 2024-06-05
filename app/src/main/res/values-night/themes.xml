@@ -1,7 +1,18 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.Parcial_22A_TP3" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+<resources>
+    <style name="Theme.Parcial_22A_TP3" parent="Theme.Material3.Dark.NoActionBar">
+        <!-- Colores primarios y de superficie -->
+        <item name="colorPrimary">@color/flight_dark_blue</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorSurface">@color/black</item>
+
+        <!-- Personalización del Switch Noche-->
+        <item name="switchStyle">@style/CustomSwitchNight</item>
+    </style>
+
+    <style name="SwitchOverlayNight" parent="">
+        <item name="colorPrimary">@color/flight_new_green</item>
+        <item name="colorOnSurfaceVariant">@color/flight_gray</item>
+        <item name="colorSurfaceVariant">@color/flight_intermedian_gray</item>
     </style>
 </resources>
