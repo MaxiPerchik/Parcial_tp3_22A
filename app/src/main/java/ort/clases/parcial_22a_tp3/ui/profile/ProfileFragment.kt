@@ -17,6 +17,8 @@ import ort.clases.parcial_22a_tp3.R
 import ort.clases.parcial_22a_tp3.adapter.PaymentDetailsAdapter
 import ort.clases.parcial_22a_tp3.data.models.PaymentDetail
 import ort.clases.parcial_22a_tp3.interfaces.OnPaymentDetailClickListener
+import androidx.preference.PreferenceManager // IMPORTADO PARA GESTIONAR PREFERENCIAS
+import androidx.appcompat.app.AppCompatDelegate // IMPORTADO PARA GESTIONAR MODOS DE TEMA
 
 class ProfileFragment : Fragment(), OnPaymentDetailClickListener {
     lateinit var v: View
@@ -30,9 +32,17 @@ class ProfileFragment : Fragment(), OnPaymentDetailClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // CARGAR EL TEMA SEGÚN LA PREFERENCIA GUARDADA
+        val sharedPref = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        val isNightModeOn = sharedPref.getBoolean("NIGHT_MODE", false)
+        if (isNightModeOn) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+
         // TODO: Use the ViewModel
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -75,7 +85,7 @@ class ProfileFragment : Fragment(), OnPaymentDetailClickListener {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        // Remove the flags when the fragment is destroyed
+        // REMOVER LAS FLAGS CUANDO EL FRAGMENTO SE DESTRUYE
         activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
     }
 
