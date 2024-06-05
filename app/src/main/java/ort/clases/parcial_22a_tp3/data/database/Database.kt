@@ -9,7 +9,7 @@ import ort.clases.parcial_22a_tp3.data.database.entities.AirportEntity
 import ort.clases.parcial_22a_tp3.data.database.entities.BestFlightEntity
 import ort.clases.parcial_22a_tp3.data.database.entities.FlightEntity
 
-@Database(entities = [BestFlightEntity::class, FlightEntity::class, AirportEntity::class], version = 3)
+@Database(entities = [BestFlightEntity::class, FlightEntity::class, AirportEntity::class], version = 6)
 abstract class Database : RoomDatabase() {
     abstract fun bestFlightDao(): BestFlightDao
     abstract fun flightDao(): FlightDao

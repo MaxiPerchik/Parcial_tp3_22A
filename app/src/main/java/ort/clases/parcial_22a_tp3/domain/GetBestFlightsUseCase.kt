@@ -87,7 +87,7 @@ class GetBestFlightsUseCase @Inject constructor(
         return airport.id
     }
 
-    suspend fun save(bestFlight: BestFlight) {
+    suspend fun favourite(bestFlight: BestFlight) {
         val bestFlightDB = bestFlightDao.getBestFlight(bestFlight.bFlightId)
         if (bestFlightDB.isFav) {
             bestFlightDao.saveBFlightOnDB(bestFlight.bFlightId, false)

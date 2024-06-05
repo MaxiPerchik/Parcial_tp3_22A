@@ -53,12 +53,14 @@ class SearchResultsFragment : Fragment() {
             binding.progressBar.isVisible = it
         }
 
-//        viewModel.navigateToBFDetails.observe(viewLifecycleOwner) { trip ->
-//            trip?.let {
-//                println("click")
-//
-//            }
-//        }
+        viewModel.navigateToBFDetails.observe(viewLifecycleOwner) { bestFlight ->
+            bestFlight?.let {
+                println("click")
+                findNavController().navigate(SearchResultsFragmentDirections.actionNavigationSearchResultToNavigationDetails(bestFlight))
+                // Reinicia el valor después de la navegación para evitar navegaciones repetidas
+                viewModel.navigateToBFDetails.value = null
+            }
+        }
 
         return binding.root
     }

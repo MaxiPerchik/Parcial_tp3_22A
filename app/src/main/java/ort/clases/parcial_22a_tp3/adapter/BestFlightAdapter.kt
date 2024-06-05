@@ -30,9 +30,9 @@ class BestFlightAdapter(
         holder.setTime(bestFlight.totalDuration)
         holder.setAirlineLogo(bestFlight.flights[0].airlineLogo)
         holder.setAirlineName(bestFlight.flights[0].airlineName)
-//        holder.viewDetails().setOnClickListener {
-//            onClickNavigate.toBestFlight(bestFlight)
-//        }
+        holder.viewDetails().setOnClickListener {
+            onClickNavigate.toBestFlight(bestFlight)
+        }
     }
 
     override fun getItemCount() = bestFlightsList.size

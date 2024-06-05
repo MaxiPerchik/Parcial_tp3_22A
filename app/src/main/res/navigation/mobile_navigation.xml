@@ -52,5 +52,20 @@
         <action
             android:id="@+id/action_navigation_search_result_to_navigation_search"
             app:destination="@id/navigation_search" />
+        <action
+            android:id="@+id/action_navigation_search_result_to_navigation_details"
+            app:destination="@id/navigation_details" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_details"
+        android:name="ort.clases.parcial_22a_tp3.ui.search.details.SearchDetailsFragment"
+        android:label="fragment_search_details"
+        tools:layout="@layout/fragment_search_details" >
+        <action
+            android:id="@+id/action_navigation_details_to_navigation_search_result"
+            app:destination="@id/navigation_search_result" />
+        <argument
+            android:name="BestFlight"
+            app:argType="ort.clases.parcial_22a_tp3.domain.models.BestFlight" />
     </fragment>
 </navigation>

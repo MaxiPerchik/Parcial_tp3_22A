@@ -1,6 +1,7 @@
 package ort.clases.parcial_22a_tp3.holder
 
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -49,5 +50,5 @@ class BestFlightHolder(v: View) : RecyclerView.ViewHolder(v) {
         val itemAirlineLogo = view.findViewById<ImageView>(R.id.flight_airline_logo)
         Glide.with(view.context).load(airlineLogo).centerInside().into(itemAirlineLogo)
     }
-//    fun viewDetails() = view.findViewById<Button>(R.id.go_to_details)
+    fun viewDetails() = view.findViewById<Button>(R.id.go_to_details)
 }
