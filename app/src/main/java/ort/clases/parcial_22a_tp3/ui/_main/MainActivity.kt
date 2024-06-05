@@ -1,6 +1,7 @@
 package ort.clases.parcial_22a_tp3.ui._main
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
@@ -23,6 +24,7 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.navigateUp
 import androidx.preference.PreferenceManager // IMPORTADO PARA GESTIONAR PREFERENCIAS
 import androidx.appcompat.app.AppCompatDelegate // IMPORTADO PARA GESTIONAR MODOS DE TEMA
+import ort.clases.parcial_22a_tp3.ui.splashscreen.SplashActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -215,4 +217,5 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
 }

@@ -42,12 +42,14 @@ class SettingsFragment : Fragment() {
         binding.switchDarkMode.isChecked = isNightModeOn
 
         binding.switchDarkMode.setOnCheckedChangeListener { _, isChecked ->
+            // Aplica la animación de desvanecimiento antes del cambio de tema
             val fadeOut = AnimationUtils.loadAnimation(requireContext(), R.anim.fade_out)
             val fadeIn = AnimationUtils.loadAnimation(requireContext(), R.anim.fade_in)
 
             view.startAnimation(fadeOut)
             fadeOut.setAnimationListener(object : android.view.animation.Animation.AnimationListener {
                 override fun onAnimationStart(animation: android.view.animation.Animation) {}
+                override fun onAnimationRepeat(animation: android.view.animation.Animation) {}
 
                 override fun onAnimationEnd(animation: android.view.animation.Animation) {
                     val mode = if (isChecked) {
@@ -59,16 +61,9 @@ class SettingsFragment : Fragment() {
 
                     sharedPref.edit().putBoolean("NIGHT_MODE", isChecked).apply()
 
-                    // Recrear la actividad para aplicar el tema
-                    activity?.let {
-                        it.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-                        it.recreate()
-                    }
-
+                    // Aplica la animación de desvanecimiento después del cambio de tema
                     view.startAnimation(fadeIn)
                 }
-
-                override fun onAnimationRepeat(animation: android.view.animation.Animation) {}
             })
         }
 
