@@ -19,6 +19,7 @@ import ort.clases.parcial_22a_tp3.data.models.PaymentDetail
 import ort.clases.parcial_22a_tp3.interfaces.OnPaymentDetailClickListener
 import androidx.preference.PreferenceManager // IMPORTADO PARA GESTIONAR PREFERENCIAS
 import androidx.appcompat.app.AppCompatDelegate // IMPORTADO PARA GESTIONAR MODOS DE TEMA
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ProfileFragment : Fragment(), OnPaymentDetailClickListener {
     lateinit var v: View
@@ -43,6 +44,7 @@ class ProfileFragment : Fragment(), OnPaymentDetailClickListener {
 
         // TODO: Use the ViewModel
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,7 +53,7 @@ class ProfileFragment : Fragment(), OnPaymentDetailClickListener {
         val backButton = v.findViewById<ImageView>(R.id.backButton)
         val editButton = v.findViewById<ImageView>(R.id.editButton)
 
-        backButton.setOnClickListener() {
+        backButton.setOnClickListener {
             v.findNavController().navigate(R.id.navigation_explore)
         }
 
@@ -62,7 +64,7 @@ class ProfileFragment : Fragment(), OnPaymentDetailClickListener {
 
         val paymentDetails = listOf(
             PaymentDetail(R.drawable.credit_card, getString(R.string.payment_details)),
-            PaymentDetail(R.drawable.person, getString(R.string.referral_code),true),
+            PaymentDetail(R.drawable.person, getString(R.string.referral_code), true),
             PaymentDetail(R.drawable.settings, getString(R.string.settings)),
             PaymentDetail(R.drawable.log_out, getString(R.string.logout))
         )
@@ -91,14 +93,14 @@ class ProfileFragment : Fragment(), OnPaymentDetailClickListener {
 
     override fun onPaymentDetailClick(paymentDetail: PaymentDetail) {
         when (paymentDetail.text) {
-//            getString(R.string.payment_details) -> {
-//                view?.findNavController()?.navigate(R.id.navigation_explore)
-//            }
-
             getString(R.string.settings) -> {
-                Snackbar.make(v, "IMPLEMENTAME!!!", Snackbar.LENGTH_LONG).show()
-            }
+                // NAVEGAR A LA CONFIGURACIÓN
+                view?.findNavController()?.navigate(R.id.navigation_settings)
 
+                // ACTUALIZAR LA SELECCIÓN DEL ELEMENTO DEL MENÚ
+                activity?.findViewById<BottomNavigationView>(R.id.nav_view)?.menu?.findItem(R.id.navigation_settings)?.isChecked = true
+                activity?.findViewById<BottomNavigationView>(R.id.nav_view)?.menu?.findItem(R.id.navigation_profiles)?.isChecked = false
+            }
             else -> {
                 Toast.makeText(
                     context,
@@ -108,5 +110,4 @@ class ProfileFragment : Fragment(), OnPaymentDetailClickListener {
             }
         }
     }
-
 }
