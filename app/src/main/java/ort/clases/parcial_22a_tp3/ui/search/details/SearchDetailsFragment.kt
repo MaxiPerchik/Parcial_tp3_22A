@@ -8,12 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import ort.clases.parcial_22a_tp3.R
 import ort.clases.parcial_22a_tp3.databinding.FragmentSearchDetailsBinding
 import ort.clases.parcial_22a_tp3.repository.ApiRepository
 import ort.clases.parcial_22a_tp3.responses.BestFlightsResponse
+import ort.clases.parcial_22a_tp3.ui.search.results.SearchResultsFragmentDirections
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -54,7 +56,12 @@ class SearchDetailsFragment : Fragment() {
                                     it?.departureToken == args.departureToken
                                 }
                                 matchingFlight?.let { bestFlight ->
-                                    name.text = bestFlight.flights?.get(0)?.airline
+                                    destinationName.text =
+                                        bestFlight.flights?.last()?.arrivalAirport?.name
+                                    flightNumber.text = bestFlight.flights?.last()?.flightNumber
+                                    val price = bestFlight.price.toString()
+                                    detailsPrice.text = "$ $price"
+
                                 } ?: run {
                                     Toast.makeText(
                                         requireContext(),
@@ -92,7 +99,11 @@ class SearchDetailsFragment : Fragment() {
                 }
 
             })
-
+            backButton.setOnClickListener {
+                val direction =
+                    SearchDetailsFragmentDirections.actionNavigationDetailsToNavigationSearchResult()
+                findNavController().navigate(direction)
+            }
         }
     }
 }

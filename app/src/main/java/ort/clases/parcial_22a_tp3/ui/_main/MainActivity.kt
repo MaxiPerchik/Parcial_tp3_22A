@@ -4,10 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
@@ -16,7 +13,6 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import ort.clases.parcial_22a_tp3.R
 import ort.clases.parcial_22a_tp3.databinding.ActivityMainBinding
@@ -31,16 +27,15 @@ class MainActivity : AppCompatActivity() {
     // Donde aparece el menu hambuirguesa
     private val fragmentsNavigation = setOf(
         R.id.navigation_explore,
-//        R.id.navigation_search,
-//        R.id.navigation_offers,
-//        R.id.navigation_profiles,
-//        R.id.navigation_notification,
-//        R.id.navigation_get_help,
-//        R.id.navigation_calendar,
     )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        // extiende el layout
+        window?.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        )
         // Inicializa la vista con ViewBinding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -146,6 +141,7 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination: NavDestination, _ ->
             when (destination.id) {
                 R.id.navigation_profiles,
+                R.id.navigation_details
                 -> {
                     binding.contentMainInclude.customToolbar.visibility = MaterialToolbar.GONE
                 }

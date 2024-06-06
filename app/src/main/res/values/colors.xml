@@ -12,6 +12,8 @@
     <color name="flight_intermedian_light_gray">#74777F</color>
     <color name="flight_intermedian_light_blue">#1B72C0</color>
     <color name="flight_intermedian_gray">#74777F</color>
+    <color name="flight_tag_gray">#F4F5F6</color>
+
     <!--    Default  -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>

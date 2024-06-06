@@ -58,12 +58,6 @@ class BestFlightsAdapterv2 @Inject constructor() :
                         it(item)
                     }
                 }
-//                flight_departure__ID.text = item.flights?.last()?.arrivalAirport?.name
-//                tvLang.text = item.airlineLogo
-//                tvRate.text = item.flights?.last()?.flightNumber
-//                tvMovieDateRelease.text = item.price.toString()
-//                val moviePosterURL = item.airlineLogo
-//                Glide.with(context).load(moviePosterURL).centerInside().into()
 
             }
         }

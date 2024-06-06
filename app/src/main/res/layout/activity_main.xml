@@ -26,7 +26,9 @@
             android:id="@+id/nav_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
             android:background="?android:attr/windowBackground"
+            app:elevation="0dp"
             app:labelVisibilityMode="labeled"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -42,7 +44,10 @@
         android:layout_gravity="start"
         android:clipToPadding="false"
         android:fitsSystemWindows="true"
-        android:paddingBottom="40dp"
+        android:paddingStart="20dp"
+        android:paddingTop="30dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="20dp"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/main_drawer_nav" />
 
