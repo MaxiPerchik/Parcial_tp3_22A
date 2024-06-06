@@ -20,7 +20,6 @@
             android:id="@+id/custom_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="40dp"
             android:theme="@style/CustomToolbarStyle"
             app:contentInsetStartWithNavigation="0dp">
 
