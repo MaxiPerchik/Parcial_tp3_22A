@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import ort.clases.parcial_22a_tp3.R
 import ort.clases.parcial_22a_tp3.adapter.PaymentDetailsAdapter
@@ -52,7 +53,7 @@ class ProfileFragment : Fragment(), OnPaymentDetailClickListener {
 
         val paymentDetails = listOf(
             PaymentDetail(R.drawable.credit_card, getString(R.string.payment_details)),
-            PaymentDetail(R.drawable.person, getString(R.string.referral_code),true),
+            PaymentDetail(R.drawable.person, getString(R.string.referral_code), true),
             PaymentDetail(R.drawable.settings, getString(R.string.settings)),
             PaymentDetail(R.drawable.log_out, getString(R.string.logout))
         )
@@ -86,7 +87,8 @@ class ProfileFragment : Fragment(), OnPaymentDetailClickListener {
 //            }
 
             getString(R.string.settings) -> {
-                Snackbar.make(v, "IMPLEMENTAME!!!", Snackbar.LENGTH_LONG).show()
+                // NAVEGAR A LA CONFIGURACIÓN
+                view?.findNavController()?.navigate(R.id.navigation_settings)
             }
 
             else -> {

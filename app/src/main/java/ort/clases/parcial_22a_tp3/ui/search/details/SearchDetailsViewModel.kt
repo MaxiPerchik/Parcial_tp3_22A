@@ -2,7 +2,6 @@ package ort.clases.parcial_22a_tp3.ui.search.details
 
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
-import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

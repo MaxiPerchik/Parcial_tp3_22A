@@ -20,7 +20,8 @@
             android:icon="@drawable/ic_calender"
             android:title="@string/title_calendar" />
         <item
+            android:id="@+id/navigation_settings"
             android:icon="@drawable/ic_clarity_settings_line"
-            android:title="settings" />
+            android:title="@string/settings" />
     </group>
 </menu>
