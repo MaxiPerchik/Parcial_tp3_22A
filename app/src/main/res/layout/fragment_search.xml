@@ -1,28 +1,394 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.search.SearchFragment">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/title_search"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!-- ScrollView para asegurar que todo el contenido sea accesible en pantallas pequeñas -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-    <Button
-        android:id="@+id/go_to_results"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+            <!-- Todos los elementos del formulario y el RecyclerView  -->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- Tarjeta principal que contiene todos los elementos -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Switch para One way/Round trip -->
+                    <!-- Switch
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp">
+
+                            <Switch
+                                android:id="@+id/search_switch"
+                                style="@style/CustomSwitchSearch"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:textOff="Round trip"
+                                android:textOn="One way"
+                                android:thumb="@drawable/search_switch_thumb_selector"
+                                android:track="@drawable/search_switch_track_selector" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start|center_vertical"
+                                android:text="One way"
+                                android:layout_marginStart="16dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end|center_vertical"
+                                android:text="Round trip"
+                                android:layout_marginEnd="16dp"/>
+                        </FrameLayout>
+
+
+                    </LinearLayout>-->
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <RadioGroup
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:clipChildren="false"
+                            android:clipToPadding="false">
+
+                            <RadioButton
+                                android:id="@+id/oneWayButton"
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/segment_left"
+                                android:button="@android:color/transparent"
+                                android:checked="true"
+                                android:gravity="center"
+                                android:paddingHorizontal="20dp"
+                                android:paddingVertical="10dp"
+                                android:text="@string/search_radiobutton_left"
+                                android:textColor="@color/selector_text_color_radiobutton"
+                                android:layout_marginEnd="-10dp" /> <!-- Asegura la superposición a la derecha -->
+
+                            <RadioButton
+                                android:id="@+id/roundTripButton"
+                                android:layout_width="160dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/segment_right"
+                                android:button="@android:color/transparent"
+                                android:gravity="center"
+                                android:paddingHorizontal="20dp"
+                                android:paddingVertical="10dp"
+                                android:text="@string/search_radiobutton_right"
+                                android:textColor="@color/selector_text_color_radiobutton"
+                                android:layout_marginStart="-10dp" /> <!-- Asegura la superposición a la izquierda -->
+                        </RadioGroup>
+
+
+
+
+
+                    </LinearLayout>
+
+
+                    <!-- Campo de texto 'From' con icono ajustado -->
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp">
+
+                        <!-- TextInputLayout para gestionar el hint "From" y el EditText -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/fromTextInputLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/search_from_Label"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            app:boxBackgroundColor="@color/white"
+                            android:textColorHint="@color/flight_black">
+
+                            <EditText
+                                android:id="@+id/fromField"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/search_from_text_Label"
+                                android:text="@string/search_from_text_Label"
+                                android:background="@drawable/edittext_background"
+                                android:padding="12dp"
+                                android:paddingStart="60dp"
+                                android:paddingEnd="12dp"
+                                android:inputType="none"
+                                android:focusable="false"
+                                android:cursorVisible="false"
+                                android:textColor="@color/flight_intermedian_gray"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <ImageView
+                            android:id="@+id/search_flight_takeoff"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_gravity="start|center_vertical"
+                            android:src="@drawable/flight_takeoff" />
+                    </FrameLayout>
+
+
+
+                    <!-- Campo de texto 'To' con icono ajustado -->
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp">
+
+                        <!-- TextInputLayout para gestionar el hint "From" y el EditText -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/toTextInputLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/search_to_Label"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            app:boxBackgroundColor="@color/white"
+                            android:textColorHint="@color/flight_black"
+                            android:textStyle="bold">
+
+                            <EditText
+                                android:id="@+id/ToField"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/search_to_text_Label"
+                                android:text="@string/search_to_text_Label"
+                                android:background="@drawable/edittext_background"
+                                android:padding="12dp"
+                                android:paddingStart="60dp"
+                                android:paddingEnd="12dp"
+                                android:inputType="none"
+                                android:focusable="false"
+                                android:cursorVisible="false"
+                                android:textColor="@color/flight_intermedian_gray"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <ImageView
+                            android:id="@+id/search_flight_arrival"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_gravity="start|center_vertical"
+                            android:src="@drawable/flight_arrival" />
+                    </FrameLayout>
+
+                    <!-- Departure Date -->
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp">
+
+                        <!-- TextInputLayout para gestionar el hint "From" y el EditText -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/calendarTextInputLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/search_calendar_Label"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            app:boxBackgroundColor="@color/white"
+                            android:textColorHint="@color/flight_black"
+                            android:textStyle="bold">
+
+                            <EditText
+                                android:id="@+id/departureDateField"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/search_calendar_text_Label"
+                                android:text="@string/search_calendar_text_Label"
+                                android:background="@drawable/edittext_background"
+                                android:padding="12dp"
+                                android:paddingStart="60dp"
+                                android:paddingEnd="12dp"
+                                android:inputType="none"
+                                android:focusable="false"
+                                android:cursorVisible="false"
+                                android:textColor="@color/flight_intermedian_gray"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <ImageView
+                            android:id="@+id/search_calendar"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_gravity="start|center_vertical"
+                            android:src="@drawable/calendar" />
+                    </FrameLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+                        android:padding="0dp">
+
+                        <!-- FrameLayout para Pasajeros -->
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingRight="5dp"
+                            android:paddingTop="5dp"
+                            android:layout_marginEnd="4dp">
+
+                            <!-- TextInputLayout para gestionar el hint "From" y el EditText -->
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/textInputLayoutPassengers"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/search_passengers_Label"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                app:boxBackgroundColor="@color/white"
+                                android:textColorHint="@color/flight_black">
+
+                                <EditText
+                                    android:id="@+id/passengersField"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/edittext_background"
+                                    android:cursorVisible="false"
+                                    android:focusable="false"
+                                    android:hint="@string/search_passengers_text_Label"
+                                    android:inputType="none"
+                                    android:padding="12dp"
+                                    android:paddingStart="60dp"
+                                    android:paddingEnd="12dp"
+                                    android:text="@string/search_passengers_text_Label"
+                                    android:textColor="@color/flight_black"
+                                    android:textStyle="bold" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <ImageView
+                                android:id="@+id/search_people"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginStart="15dp"
+                                android:layout_gravity="start|center_vertical"
+                                android:src="@drawable/ic_people" />
+                        </FrameLayout>
+
+                        <!-- FrameLayout para Clase -->
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingLeft="5dp"
+                            android:paddingTop="5dp"
+                            android:layout_marginEnd="4dp">
+
+                            <!-- TextInputLayout para gestionar el hint "From" y el EditText -->
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/textInputLayoutClass"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/search_class_Label"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                app:boxBackgroundColor="@color/white"
+                                android:textColorHint="@color/flight_black">
+
+                                <EditText
+                                    android:id="@+id/classField"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="@string/search_class_text_Label"
+                                    android:text="@string/search_class_text_Label"
+                                    android:background="@drawable/edittext_background"
+                                    android:padding="12dp"
+                                    android:paddingStart="60dp"
+                                    android:paddingEnd="12dp"
+                                    android:inputType="none"
+                                    android:focusable="false"
+                                    android:cursorVisible="false"
+                                    android:textColor="@color/flight_black"
+                                    android:textStyle="bold" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <ImageView
+                                android:id="@+id/search_thumb_up"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginStart="15dp"
+                                android:layout_gravity="start|center_vertical"
+                                android:src="@drawable/ic_thumb_up" />
+                        </FrameLayout>
+                    </LinearLayout>
+
+
+
+                    <!-- Botón de búsqueda conservando el ID original -->
+                    <Button
+                        android:id="@+id/go_to_results"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Search"
+                        android:backgroundTint="@color/flight_orange"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="16dp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <!-- Offers -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Offers"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:layout_marginBottom="8dp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/offersRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/search_component_offer_item"
+                    android:orientation="horizontal"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
