@@ -174,11 +174,13 @@
         android:orientation="vertical">
 
         <include
+            android:id="@+id/include1"
             layout="@layout/component_cart_item_airline_logo_name_d_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <include
+            android:id="@+id/include2"
             layout="@layout/component_card_item__flight_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -191,6 +193,7 @@
             android:background="?android:attr/listDivider" />
 
         <include
+            android:id="@+id/include3"
             layout="@layout/component_card_item__price_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

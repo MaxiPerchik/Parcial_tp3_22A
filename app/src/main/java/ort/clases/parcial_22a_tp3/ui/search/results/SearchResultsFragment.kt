@@ -1,67 +1,95 @@
 package ort.clases.parcial_22a_tp3.ui.search.results
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
-import androidx.navigation.fragment.findNavController
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import ort.clases.parcial_22a_tp3.R
-import ort.clases.parcial_22a_tp3.adapter.BestFlightAdapter
-import ort.clases.parcial_22a_tp3.databinding.ActivityMainBinding
+import ort.clases.parcial_22a_tp3.adapter.BestFlightsAdapterv2
 import ort.clases.parcial_22a_tp3.databinding.FragmentSearchResultsBinding
-import ort.clases.parcial_22a_tp3.domain.models.BestFlight
+import ort.clases.parcial_22a_tp3.repository.ApiRepository
+import ort.clases.parcial_22a_tp3.responses.BestFlightsResponse
+import retrofit2.Call
+import retrofit2.Response
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class SearchResultsFragment : Fragment() {
-    private var _binding: FragmentSearchResultsBinding? = null
-    private val binding get() = _binding!!
 
-    private val viewModel: SearchResultsViewModel by viewModels()
+    private lateinit var binding: FragmentSearchResultsBinding
 
-    private lateinit var bestFlightAdapter: BestFlightAdapter
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    @Inject
+    lateinit var apiRepository: ApiRepository
+
+    @Inject
+    lateinit var flightsAdapterv2: BestFlightsAdapterv2
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentSearchResultsBinding.inflate(inflater, container, false)
-
-        bestFlightAdapter = BestFlightAdapter(mutableListOf(), viewModel)
-//        binding.root.setBackgroundColor(resources.getColor(R.color.black))
-        viewModel.onCreate()
-
-        binding.bestFlightsRecyclev.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = bestFlightAdapter
-        }
-
-        viewModel.bestFlightList.observe(viewLifecycleOwner) {
-            it?.let {
-                bestFlightAdapter.updateList(it)
-            }
-        }
-
-        viewModel.isLoading.observe(viewLifecycleOwner) {
-            binding.progressBar.isVisible = it
-        }
-
-        viewModel.navigateToBFDetails.observe(viewLifecycleOwner) { bestFlight ->
-            bestFlight?.let {
-                println("click")
-                findNavController().navigate(SearchResultsFragmentDirections.actionNavigationSearchResultToNavigationDetails(bestFlight))
-                // Reinicia el valor después de la navegación para evitar navegaciones repetidas
-                viewModel.navigateToBFDetails.value = null
-            }
-        }
-
+    ): View? {
+        binding = FragmentSearchResultsBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.apply {
+            progressBar.visibility = View.VISIBLE
+            apiRepository.getBestFlights()
+                .enqueue(object : retrofit2.Callback<BestFlightsResponse> {
+                    override fun onResponse(
+                        call: Call<BestFlightsResponse>, response: Response<BestFlightsResponse>
+                    ) {
+                        progressBar.visibility = View.GONE
+                        when (response.code()) {
+                            200 -> {
+                                response.body().let { itBody ->
+                                    if (itBody?.bestFlights!!.isNotEmpty()) {
+                                        flightsAdapterv2.differ.submitList(itBody.bestFlights)
+
+                                    }
+                                    bestFlightsRecyclev.apply {
+                                        layoutManager = LinearLayoutManager(requireContext())
+                                        adapter = flightsAdapterv2
+                                    }
+                                }
+                            }
+
+                            400 -> {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "The resource you requested could not be found.",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+
+                            401 -> {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Invalid API key: You must be granted a valid key.",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        }
+
+
+                    }
+
+                    override fun onFailure(call: Call<BestFlightsResponse>, t: Throwable) {
+                        progressBar.visibility = View.GONE
+                        Toast.makeText(
+                            requireContext(),
+                            "Failure",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                })
+        }
+    }
+
 }
