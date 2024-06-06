@@ -87,6 +87,7 @@ class OffersAdapter(private val offers: List<Offer>) : RecyclerView.Adapter<Recy
                     offerFavorite.setImageResource(R.drawable.ic_favorite_full_24dp)
                 }
                 offerFavorite.tag = !isFavorite
+
             }
         }
     }
