@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/navigation_explore">
+
+    <fragment
+        android:id="@+id/navigation_explore"
+        android:name="ort.clases.parcial_22a_tp3.ui.explore.ExploreFragment"
+        android:label="fragment_explore"
+        tools:layout="@layout/fragment_explore" >
+        <action
+            android:id="@+id/action_navigation_explore_to_navigation_details"
+            app:destination="@id/navigation_details" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_offers"
+        android:name="ort.clases.parcial_22a_tp3.ui.offers.OffersFragment"
+        android:label="fragment_offers"
+        tools:layout="@layout/fragment_offers" />
+    <fragment
+        android:id="@+id/navigation_profiles"
+        android:name="ort.clases.parcial_22a_tp3.ui.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/navigation_search"
+        android:name="ort.clases.parcial_22a_tp3.ui.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_navigation_search_to_searchResultsFragment"
+            app:destination="@id/navigation_search_result" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_calendar"
+        android:name="ort.clases.parcial_22a_tp3.ui.calendar.CalendarFragment"
+        android:label="fragment_calendar"
+        tools:layout="@layout/fragment_calendar" />
+    <fragment
+        android:id="@+id/navigation_get_help"
+        android:name="ort.clases.parcial_22a_tp3.ui.gethelp.GetHelpFragment"
+        android:label="fragment_get_help"
+        tools:layout="@layout/fragment_get_help" />
+    <fragment
+        android:id="@+id/navigation_notification"
+        android:name="ort.clases.parcial_22a_tp3.ui.notification.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" />
+    <fragment
+        android:id="@+id/navigation_search_result"
+        android:name="ort.clases.parcial_22a_tp3.ui.search.results.SearchResultsFragment"
+        android:label="fragment_search_results"
+        tools:layout="@layout/fragment_search_results" >
+        <action
+            android:id="@+id/action_navigation_search_result_to_navigation_search"
+            app:destination="@id/navigation_search" />
+        <action
+            android:id="@+id/action_navigation_search_result_to_navigation_details"
+            app:destination="@id/navigation_details" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_details"
+        android:name="ort.clases.parcial_22a_tp3.ui.search.details.SearchDetailsFragment"
+        android:label="fragment_search_details"
+        tools:layout="@layout/fragment_search_details" >
+        <action
+            android:id="@+id/action_navigation_details_to_navigation_search_result"
+            app:destination="@id/navigation_search_result" />
+        <argument
+            android:name="departureToken"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_navigation_details_to_navigation_explore"
+            app:destination="@id/navigation_explore" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="ort.clases.parcial_22a_tp3.ui.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+</navigation>

@@ -1,9 +1,56 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Parcial_22A_TP3" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <style name="Base.Theme.Parcial_22A_TP3" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/flight_blue</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnSurface">@color/flight_black</item>
+
+        <!-- Personalización del Switch Dia-->
+        <item name="switchStyle">@style/CustomSwitch</item>
     </style>
 
-    <style name="Theme.Parcial_22A_TP3" parent="Base.Theme.Parcial_22A_TP3" />
+    <style name="Theme.Parcial_22A_TP3" parent="Base.Theme.Parcial_22A_TP3">
+        <!-- para que no muestre el splash screen x default y tengamos la illusion del nuestro -->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:fontFamily">@font/roboto</item>
+
+    </style>
+
+    <style name="AppTheme.ProfileTitle" parent="Base.Theme.Parcial_22A_TP3">
+        <item name="android:textColor">@color/flight_black</item>
+        <item name="android:textStyle">bold</item>
+        <!--        <item name="android:backgroundTint">@null</item>-->
+    </style>
+
+    <style name="AppTheme.flight_item__text" parent="Base.Theme.Parcial_22A_TP3">
+        <item name="android:textColor">@color/flight_black</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="AppTheme.flight_item__price" parent="Base.Theme.Parcial_22A_TP3">
+        <item name="android:textColor">@color/flight_black</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppTheme.flight_button" parent="Base.Theme.Parcial_22A_TP3">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textSize">14sp</item>
+        <item name="colorPrimary">@color/flight_orange</item>
+        <item name="cornerRadius">5dp</item>
+    </style>
+
+    <style name="AppTheme.flight_item__airport_id" parent="Base.Theme.Parcial_22A_TP3">
+        <item name="fontFamily">@font/inter</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/flight_blue</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontWeight">700</item>
+    </style>
+
 </resources>
