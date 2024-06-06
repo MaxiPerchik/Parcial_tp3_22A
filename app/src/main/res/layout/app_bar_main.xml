@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFF"
+        android:gravity="center"
         app:elevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,10 +19,9 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/custom_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="match_parent"
             android:theme="@style/CustomToolbarStyle"
-            app:contentInsetStartWithNavigation="0dp"
-            app:layout_collapseMode="pin">
+            app:contentInsetStartWithNavigation="0dp">
 
             <ImageView
                 android:id="@+id/logoImage"
@@ -31,7 +31,6 @@
                 android:contentDescription="@string/app_name"
                 android:gravity="center_vertical"
                 android:src="@drawable/ic_logo" />
-
 
             <TextView
                 android:id="@+id/toolbarTitle"

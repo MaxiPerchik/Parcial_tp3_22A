@@ -16,7 +16,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.navigation.NavigationView
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 import ort.clases.parcial_22a_tp3.R
 import ort.clases.parcial_22a_tp3.databinding.ActivityMainBinding
 import androidx.appcompat.widget.Toolbar
@@ -27,28 +28,25 @@ import androidx.appcompat.app.AppCompatDelegate // IMPORTADO PARA GESTIONAR MODO
 import ort.clases.parcial_22a_tp3.ui.splashscreen.SplashActivity
 
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var toolbar: MaterialToolbar
-    private lateinit var logoImage: ImageView
-    private lateinit var includeProfileBackground: View
-    private lateinit var toolbarTitle: TextView
 
-    // IDs de navegación
+
+    // Donde aparece el menu hambuirguesa
     private val fragmentsNavigation = setOf(
         R.id.navigation_explore,
-        R.id.navigation_search,
-        R.id.navigation_offers,
-        R.id.navigation_profiles,
-        R.id.navigation_notification,
-        R.id.navigation_get_help,
-        R.id.navigation_calendar,
-        R.id.navigation_settings,
-    )
+//        R.id.navigation_search,
+//        R.id.navigation_offers,
+//        R.id.navigation_profiles,
+//        R.id.navigation_notification,
+//        R.id.navigation_get_help,
+//        R.id.navigation_calendar,
 
+    )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -73,16 +71,12 @@ class MainActivity : AppCompatActivity() {
         // Configura la barra de acción con el controlador de navegación
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        // Configura NavigationView con NavController
+        // Configura la NavigationView (menu habmurgeuesa) con NavController
         binding.navigationView.setupWithNavController(navController)
 
         // Configura BottomNavigationView con NavController
         binding.navView.setupWithNavController(navController)
 
-        toolbar = findViewById(R.id.custom_toolbar)
-        logoImage = findViewById(R.id.logoImage)
-        includeProfileBackground = findViewById(R.id.includeProfileBackground)
-        toolbarTitle = findViewById(R.id.toolbarTitle)
 
         fragmentBehaviour()
 
@@ -100,6 +94,12 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
+    private fun fragmentBehaviour() {
+        setFragmentTitles()
+        removeToolBarImageView()
+        removeToolBar()
+    }
+    
     override fun onPause() {
         super.onPause()
         val sharedPref = getPreferences(Context.MODE_PRIVATE) ?: return
@@ -127,80 +127,55 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Muetra u oculta elementos de la tool bar
-     */
-    private fun showHideElements(
-        toolbar: MaterialToolbar,
-        toolbarVisible: Int = View.VISIBLE,
-        text: String = "",
-        logoImageVisibility: Int = View.VISIBLE,
-        includeProfileBackgroundVisibility: Int = View.VISIBLE
-    ) {
-        toolbar.visibility = toolbarVisible
-        toolbar.title = ""
-        toolbarTitle.text = text
-        logoImage.visibility = logoImageVisibility
-        includeProfileBackground.visibility = includeProfileBackgroundVisibility
-    }
 
-    /**
-     * Configura comportamiento según Fragmento
-     */
-    private fun fragmentBehaviour() {
+    private fun setFragmentTitles() {
         navController.addOnDestinationChangedListener { _, destination: NavDestination, _ ->
             when (destination.id) {
-                R.id.navigation_explore -> {
-                    showHideElements(toolbar)
-                    activateDrawerLayout(toolbar)
-                }
+
                 R.id.navigation_search -> {
-                    showHideElements(
-                        toolbar,
-                        text = getString(R.string.title_search),
-                        logoImageVisibility = View.GONE,
-                        includeProfileBackgroundVisibility = View.GONE
-                    )
-                    navigateToMainNavFragment(toolbar)
+                    binding.contentMainInclude.toolbarTitle.text =
+                        getString(R.string.title_search)
                 }
                 R.id.navigation_offers -> {
-                    showHideElements(
-                        toolbar,
-                        text = getString(R.string.title_offers),
-                        logoImageVisibility = View.GONE,
-                        includeProfileBackgroundVisibility = View.GONE
-                    )
-                    navigateToMainNavFragment(toolbar)
-                }
-                R.id.navigation_profiles -> {
-                    toolbar.visibility = View.GONE
+
+                    binding.contentMainInclude.toolbarTitle.text =
+                        getString(R.string.title_offers)
                 }
                 R.id.navigation_notification -> {
-                    showHideElements(
-                        toolbar,
-                        text = getString(R.string.title_notification),
-                        logoImageVisibility = View.GONE,
-                        includeProfileBackgroundVisibility = View.GONE
-                    )
-                    navigateToMainNavFragment(toolbar)
+                    binding.contentMainInclude.toolbarTitle.text =
+                        getString(R.string.title_notification)
                 }
                 R.id.navigation_get_help -> {
-                    showHideElements(
-                        toolbar,
-                        text = getString(R.string.title_get_help),
-                        logoImageVisibility = View.GONE,
-                        includeProfileBackgroundVisibility = View.GONE
-                    )
-                    navigateToMainNavFragment(toolbar)
+
+                    binding.contentMainInclude.toolbarTitle.text =
+                        getString(R.string.title_get_help)
                 }
-                R.id.navigation_calendar -> {
-                    showHideElements(
-                        toolbar,
-                        text = getString(R.string.title_calendar),
-                        logoImageVisibility = View.GONE,
-                        includeProfileBackgroundVisibility = View.GONE
-                    )
-                    navigateToMainNavFragment(toolbar)
+
+                R.id.navigation_calendar,
+                -> {
+                    binding.contentMainInclude.toolbarTitle.text =
+                        getString(R.string.title_calendar)
+                }
+
+                else -> {
+                    binding.contentMainInclude.customToolbar.title = ""
+                    binding.contentMainInclude.toolbarTitle.text = ""
+                }
+            }
+        }
+    }
+
+    private fun removeToolBarImageView() {
+        navController.addOnDestinationChangedListener { _, destination: NavDestination, _ ->
+            when (destination.id) {
+                R.id.navigation_search,
+                R.id.navigation_offers,
+                R.id.navigation_notification,
+                R.id.navigation_get_help,
+                R.id.navigation_calendar
+                -> {
+                    binding.contentMainInclude.customToolbar.title = ""
+                    binding.contentMainInclude.logoImage.visibility = ImageView.GONE
                 }
                 R.id.navigation_settings -> {
                     showHideElements(
@@ -212,10 +187,28 @@ class MainActivity : AppCompatActivity() {
                     navigateToMainNavFragment(toolbar)
                 }
                 else -> {
-                    showHideElements(toolbar)
+                    binding.contentMainInclude.customToolbar.title = ""
+                    binding.contentMainInclude.logoImage.visibility = ImageView.VISIBLE
                 }
             }
         }
+
+    }
+
+    private fun removeToolBar() {
+        navController.addOnDestinationChangedListener { _, destination: NavDestination, _ ->
+            when (destination.id) {
+                R.id.navigation_profiles,
+                -> {
+                    binding.contentMainInclude.customToolbar.visibility = MaterialToolbar.GONE
+                }
+
+                else -> {
+                    binding.contentMainInclude.customToolbar.visibility = MaterialToolbar.VISIBLE
+                }
+            }
+        }
+
     }
 
 }
