@@ -32,4 +32,25 @@
     <string name="settings_card_text">Modo Oscuro</string>
     <string name="overview">Overview</string>
     <string name="destination_description">Spend 5 days and 4 nights in one of the best islands in the world! Bask in the sun while walking in the white sand beach and enjoy the night partying at the popular seaside bars.</string>
+
+    <!--  SearchOfferItem  -->
+    <string name="search_radiobutton_left">One way</string>
+    <string name="search_radiobutton_right">Round trip</string>
+    <string name="search_from_Label">From</string>
+    <string name="search_from_text_Label">Select Departure</string>
+    <string name="search_to_Label">To</string>
+    <string name="search_to_text_Label">Select Arrival</string>
+    <string name="search_calendar_Label">Departure Date</string>
+    <string name="search_calendar_text_Label">Select Date</string>
+    <string name="search_passengers_Label">Passengers</string>
+    <string name="search_passengers_text_Label">1 Adult</string>
+    <string name="search_class_Label">Class</string>
+    <string name="search_class_text_Label">Economy</string>
+
+    <string name="search_offer_text">Limited time offer!</string>
+    <string name="search_title_text_mastercard"><![CDATA[Get 20% discount for Mastercard users]]></string>
+    <string name="search_title_text_visa"><![CDATA[Get 25% discount with your VISA credit cards]]></string>
+
+
+
 </resources>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background for the EditText when it is focused -->
+    <item android:state_focused="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/white" />
+            <corners android:radius="8dp" />
+            <stroke android:width="2dp" android:color="@color/flight_intermedian_light_blue" />
+        </shape>
+    </item>
+
+    <!-- Default Background for the EditText -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/white" />
+            <corners android:radius="8dp" />
+            <stroke android:width="3dp" android:color="@color/flight_light_gray" />
+        </shape>
+    </item>
+</selector>

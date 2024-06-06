@@ -32,6 +32,11 @@
         <item name="android:track">@drawable/switch_track_selector_day</item>
     </style>
 
+    <style name="CustomSwitchSearch" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="android:thumb">@drawable/search_switch_thumb_selector</item>
+        <item name="android:track">@drawable/search_switch_track_selector</item>
+    </style>
+
     <style name="CustomSwitchNight" parent="Widget.Material3.CompoundButton.Switch">
         <item name="android:thumb">@drawable/switch_thumb_selector_night</item>
         <item name="android:track">@drawable/switch_track_selector_night</item>
