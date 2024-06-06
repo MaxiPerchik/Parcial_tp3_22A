@@ -35,19 +35,23 @@ class SearchFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        v = inflater.inflate(R.layout.fragment_search, container, false)
+        // Infla la vista una sola vez y usa esa misma instancia en todo el método.
+        val view = inflater.inflate(R.layout.fragment_search, container, false)
 
-        val btn = v.findViewById<Button>(R.id.go_to_results)
+        // Encuentra el botón usando la vista inflada
+        val btn = view.findViewById<Button>(R.id.go_to_results)
 
+        // Establece el evento de clic para el botón
         btn.setOnClickListener {
-            v.findNavController()
+            view.findNavController()
                 .navigate(SearchFragmentDirections.actionNavigationSearchToSearchResultsFragment())
         }
-        val view = inflater.inflate(R.layout.fragment_search, container, false)
+
+        // Configura el RecyclerView u otros componentes usando la misma vista.
         setupRecyclerView(view)
         return view
-
     }
+
 
     private fun setupRecyclerView(view: View) {
         recyclerView = view.findViewById(R.id.offersRecyclerView)
