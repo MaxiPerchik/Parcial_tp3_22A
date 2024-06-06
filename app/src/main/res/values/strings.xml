@@ -7,6 +7,7 @@
     <string name="title_notification">Notification</string>
     <string name="title_get_help">Get Help</string>
     <string name="title_calendar">Calendar</string>
+    <string name="title_settings">Settings</string>
     <string name="hello">Hello</string>
     <string name="profile_name">Macy Johnson</string>
     <string name="profile_country">Baguio, Philippines</string>
@@ -14,7 +15,15 @@
     <string name="payment_details">Payment Details</string>
     <string name="referral_code">Referral Code</string>
     <string name="settings">Settings</string>
+    <string name="settings_card_h1">Generales</string>
+    <string name="settings_card_text">Modo Oscuro</string>
     <string name="logout">Logout</string>
+    <string name="offer_text_mastercard">Use your mastercard with any transaction and get 20% discount instantly!</string>
+    <string name="offer_text_visa">Use your VISA credit or debit card with any transaction and get 25% discount instantly!</string>
+    <string name="offer_title_text"><![CDATA[<b>Get 20% discount</b> with your Master credit cards]]></string>
+    <string name="offer_title_text_visa"><![CDATA[<b>Get 25% discount</b> with your VISA credit or debit cards]]></string>
+
+
 
     <!--    -->
     <string name="feature_not_implemented">Feature not Implemented</string>

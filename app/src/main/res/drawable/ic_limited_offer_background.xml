@@ -1,0 +1,11 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="908dp"
+    android:height="233dp"
+    android:viewportWidth="908"
+    android:viewportHeight="233">
+
+    <!-- Less Rounded Rectangle for the banner -->
+    <path
+        android:fillColor="#4DB6AC"
+        android:pathData="M30,0 h848 a30,30 0 0,1 30,30 v173 a30,30 0 0,1 -30,30 h-848 a30,30 0 0,1 -30,-30 v-173 a30,30 0 0,1 30,-30 z" />
+</vector>

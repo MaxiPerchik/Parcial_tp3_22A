@@ -45,6 +45,7 @@
         android:label="fragment_notification"
         tools:layout="@layout/fragment_notification" />
     <fragment
+
         android:id="@+id/navigation_search_result"
         android:name="ort.clases.parcial_22a_tp3.ui.search.results.SearchResultsFragment"
         android:label="fragment_search_results"
@@ -68,4 +69,9 @@
             android:name="BestFlight"
             app:argType="ort.clases.parcial_22a_tp3.domain.models.BestFlight" />
     </fragment>
+
+        android:id="@+id/navigation_settings"
+        android:name="ort.clases.parcial_22a_tp3.ui.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

@@ -1,0 +1,17 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Círculo base (siempre blanco) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M12,2 C17.522847,2 22,6.4771525 22,12 C22,17.522847 17.522847,22 12,22 C6.4771525,22 2,17.522847 2,12 C2,6.4771525 6.4771525,2 12,2 Z" />
+    <!-- Símbolo de check (más fino y centrado) -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M7,12 l3,3 l7,-7"
+        android:strokeColor="@color/flight_black"
+        android:strokeWidth="1.5"
+         />
+</vector>

@@ -17,6 +17,9 @@ import ort.clases.parcial_22a_tp3.R
 import ort.clases.parcial_22a_tp3.adapter.PaymentDetailsAdapter
 import ort.clases.parcial_22a_tp3.domain.models.PaymentDetail
 import ort.clases.parcial_22a_tp3.interfaces.OnPaymentDetailClickListener
+import androidx.preference.PreferenceManager // IMPORTADO PARA GESTIONAR PREFERENCIAS
+import androidx.appcompat.app.AppCompatDelegate // IMPORTADO PARA GESTIONAR MODOS DE TEMA
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ProfileFragment : Fragment(), OnPaymentDetailClickListener {
     lateinit var v: View
@@ -30,6 +33,15 @@ class ProfileFragment : Fragment(), OnPaymentDetailClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // CARGAR EL TEMA SEGÚN LA PREFERENCIA GUARDADA
+        val sharedPref = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        val isNightModeOn = sharedPref.getBoolean("NIGHT_MODE", false)
+        if (isNightModeOn) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+
         // TODO: Use the ViewModel
     }
 
@@ -41,7 +53,7 @@ class ProfileFragment : Fragment(), OnPaymentDetailClickListener {
         val backButton = v.findViewById<ImageView>(R.id.backButton)
         val editButton = v.findViewById<ImageView>(R.id.editButton)
 
-        backButton.setOnClickListener() {
+        backButton.setOnClickListener {
             v.findNavController().navigate(R.id.navigation_explore)
         }
 
@@ -52,7 +64,7 @@ class ProfileFragment : Fragment(), OnPaymentDetailClickListener {
 
         val paymentDetails = listOf(
             PaymentDetail(R.drawable.credit_card, getString(R.string.payment_details)),
-            PaymentDetail(R.drawable.person, getString(R.string.referral_code),true),
+            PaymentDetail(R.drawable.person, getString(R.string.referral_code), true),
             PaymentDetail(R.drawable.settings, getString(R.string.settings)),
             PaymentDetail(R.drawable.log_out, getString(R.string.logout))
         )
@@ -75,20 +87,20 @@ class ProfileFragment : Fragment(), OnPaymentDetailClickListener {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        // Remove the flags when the fragment is destroyed
+        // REMOVER LAS FLAGS CUANDO EL FRAGMENTO SE DESTRUYE
         activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
     }
 
     override fun onPaymentDetailClick(paymentDetail: PaymentDetail) {
         when (paymentDetail.text) {
-//            getString(R.string.payment_details) -> {
-//                view?.findNavController()?.navigate(R.id.navigation_explore)
-//            }
-
             getString(R.string.settings) -> {
-                Snackbar.make(v, "IMPLEMENTAME!!!", Snackbar.LENGTH_LONG).show()
-            }
+                // NAVEGAR A LA CONFIGURACIÓN
+                view?.findNavController()?.navigate(R.id.navigation_settings)
 
+                // ACTUALIZAR LA SELECCIÓN DEL ELEMENTO DEL MENÚ
+                activity?.findViewById<BottomNavigationView>(R.id.nav_view)?.menu?.findItem(R.id.navigation_settings)?.isChecked = true
+                activity?.findViewById<BottomNavigationView>(R.id.nav_view)?.menu?.findItem(R.id.navigation_profiles)?.isChecked = false
+            }
             else -> {
                 Toast.makeText(
                     context,
@@ -98,5 +110,4 @@ class ProfileFragment : Fragment(), OnPaymentDetailClickListener {
             }
         }
     }
-
 }
