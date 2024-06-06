@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--    Figma pallet colors  -->
+    <color name="flight_black">#191919</color>
+    <color name="flight_gray">#7E8B97</color>
+    <color name="flight_light_gray">#BBBBBB</color>
+    <color name="flight_blue">#10579B</color>
+    <color name="flight_light_blue">#3AA4C8</color>
+    <color name="flight_orange">#F99A0E</color>
+    <color name="flight_gray_2">#F8F9FB</color>
+    <color name="flight_new_green">#32D4AD</color>
+    <color name="flight_intermedian_light_gray">#74777F</color>
+    <color name="flight_intermedian_light_blue">#1B72C0</color>
+    <color name="flight_intermedian_gray">#74777F</color>
+    <color name="flight_tag_gray">#F4F5F6</color>
+
+    <!--    Default  -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="background_gray">#F8F9FB</color>
+    <color name="transparent">#00000000</color>
+    <color name="red">#FF0000</color>
+    <color name="empty">#00000000</color>
+
 </resources>
