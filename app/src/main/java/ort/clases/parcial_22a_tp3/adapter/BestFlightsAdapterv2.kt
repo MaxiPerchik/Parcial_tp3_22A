@@ -52,6 +52,12 @@ class BestFlightsAdapterv2 @Inject constructor() :
 
                 include3.flightTypeSeat.text = item.type.toString()
                 include3.flightPrice.text = item.price.toString()
+
+                include3.goToDetails.setOnClickListener {
+                    onItemClickListener?.let {
+                        it(item)
+                    }
+                }
 //                flight_departure__ID.text = item.flights?.last()?.arrivalAirport?.name
 //                tvLang.text = item.airlineLogo
 //                tvRate.text = item.flights?.last()?.flightNumber
@@ -61,6 +67,11 @@ class BestFlightsAdapterv2 @Inject constructor() :
 
             }
         }
+    }
+
+    private var onItemClickListener: ((BestFlightsResponse.BestFlight) -> Unit)? = null
+    fun setOnItemCLickListener(listener: (BestFlightsResponse.BestFlight) -> Unit) {
+        onItemClickListener = listener
     }
 
     private val differCallback = object : DiffUtil.ItemCallback<BestFlightsResponse.BestFlight>() {

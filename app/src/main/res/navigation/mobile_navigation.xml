@@ -65,8 +65,8 @@
             android:id="@+id/action_navigation_details_to_navigation_search_result"
             app:destination="@id/navigation_search_result" />
         <argument
-            android:name="BestFlight"
-            app:argType="ort.clases.parcial_22a_tp3.domain.models.BestFlight" />
+            android:name="departureToken"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/navigation_settings"

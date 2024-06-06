@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import ort.clases.parcial_22a_tp3.adapter.BestFlightsAdapterv2
@@ -56,6 +57,10 @@ class SearchResultsFragment : Fragment() {
                                     bestFlightsRecyclev.apply {
                                         layoutManager = LinearLayoutManager(requireContext())
                                         adapter = flightsAdapterv2
+                                    }
+                                    flightsAdapterv2.setOnItemCLickListener {
+                                        val direction = SearchResultsFragmentDirections.actionNavigationSearchResultToNavigationDetails(it.departureToken!!)
+                                        findNavController().navigate(direction)
                                     }
                                 }
                             }
