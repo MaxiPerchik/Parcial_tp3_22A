@@ -105,16 +105,16 @@
 
                             <RadioButton
                                 android:id="@+id/roundTripButton"
-                                android:layout_width="160dp"
+                                android:layout_width="140dp"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="-10dp"
                                 android:background="@drawable/segment_right"
                                 android:button="@android:color/transparent"
                                 android:gravity="center"
                                 android:paddingHorizontal="20dp"
                                 android:paddingVertical="10dp"
                                 android:text="@string/search_radiobutton_right"
-                                android:textColor="@color/selector_text_color_radiobutton"
-                                android:layout_marginStart="-10dp" /> <!-- Asegura la superposición a la izquierda -->
+                                android:textColor="@color/selector_text_color_radiobutton" /> <!-- Asegura la superposición a la izquierda -->
                         </RadioGroup>
 
 
